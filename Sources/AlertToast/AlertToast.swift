@@ -121,7 +121,7 @@ public struct AlertToast: View{
         case systemImage(_ name: String, _ color: Color)
         
         ///Image from Assets
-        case image(_ name: String, _ color: Color)
+        case image(_ name: String, _ color: Color?)
         
         ///Loading indicator (Circular)
         case loading
