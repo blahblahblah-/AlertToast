@@ -242,9 +242,13 @@ public struct AlertToast: View{
                         Image(systemName: name)
                             .foregroundColor(color)
                     case .image(let name, let color):
-                        Image(name)
-                            .renderingMode(.template)
-                            .foregroundColor(color)
+                        if let colorVal = color {
+                            Image(name)
+                                .renderingMode(.template)
+                                .foregroundColor(colorVal)
+                        } else {
+                            Image(name)
+                        }
                     case .loading:
                         ActivityIndicator()
                     case .regular:
@@ -288,9 +292,14 @@ public struct AlertToast: View{
                         .hudModifier()
                         .foregroundColor(color)
                 case .image(let name, let color):
-                    Image(name)
-                        .hudModifier()
-                        .foregroundColor(color)
+                    if let colorVal = color {
+                        Image(name)
+                            .hudModifier()
+                            .foregroundColor(colorVal)
+                    } else {
+                        Image(name)
+                            .hudModifier()
+                    }
                 case .loading:
                     ActivityIndicator()
                 case .regular:
@@ -351,12 +360,20 @@ public struct AlertToast: View{
                 Spacer()
             case .image(let name, let color):
                 Spacer()
-                Image(name)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .scaledToFit()
-                    .foregroundColor(color)
-                    .padding(.bottom)
+                if let colorVal = color {
+                    Image(name)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .scaledToFit()
+                        .foregroundColor(colorVal)
+                        .padding(.bottom)
+                } else {
+                    Image(name)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .scaledToFit()
+                        .padding(.bottom)
+                }
                 Spacer()
             case .loading:
                 ActivityIndicator()
