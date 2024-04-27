@@ -302,6 +302,7 @@ public struct AlertToast: View{
                             .foregroundColor(colorVal)
                     } else {
                         Image(name)
+                            .renderingMode(.original)
                             .hudModifier()
                     }
                 case .loading:
