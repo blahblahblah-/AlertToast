@@ -281,19 +281,23 @@ public struct AlertToast: View{
                 switch type{
                 case .complete(let color):
                     Image(systemName: "checkmark")
+                        .renderingMode(.template)
                         .hudModifier()
                         .foregroundColor(color)
                 case .error(let color):
                     Image(systemName: "xmark")
+                        .renderingMode(.template)
                         .hudModifier()
                         .foregroundColor(color)
                 case .systemImage(let name, let color):
                     Image(systemName: name)
+                        .renderingMode(.template)
                         .hudModifier()
                         .foregroundColor(color)
                 case .image(let name, let color):
                     if let colorVal = color {
                         Image(name)
+                            .renderingMode(.template)
                             .hudModifier()
                             .foregroundColor(colorVal)
                     } else {
@@ -672,7 +676,6 @@ fileprivate extension Image{
     
     func hudModifier() -> some View{
         self
-            .renderingMode(.template)
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(maxWidth: 20, maxHeight: 20, alignment: .center)
